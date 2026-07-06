@@ -37,7 +37,7 @@ jobs:
           # don't match the expected naming convention.
           for f in *.md; do
             case "$f" in
-              README.md|0-template.md|week-*.md) ;;
+              README.md|week-*.md) ;;
               *) echo "::warning file=$f::unexpected markdown file (expected week-NN.md)" ;;
             esac
           done

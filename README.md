@@ -12,9 +12,8 @@ template" to create a course-specific response repo (e.g.
    **"Template repository"** so students can then use it as *their* template.
 4. Edit the following files for your course:
    - `README.md` — replace this content with the student-facing quickstart
-     for your class.
-   - `0-template.md` — adjust the response format if you want more or
-     fewer sections.
+     for your class. Keep the response-format code block below (or edit it
+     if your course wants different sections).
    - `.github/workflows/lint.yml` — extend the placeholder lint rules with
      anything you want structurally enforced (naming convention, required
      sections, word counts, whatever).
@@ -35,12 +34,26 @@ The rough shape:
 1. **Use this template** → private repo in your own account.
 2. Add instructor as a Read collaborator (Settings → Collaborators).
 3. Submit your repo URL as instructed.
-4. Each week: copy `0-template.md` to `week-NN.md`, fill it in, commit.
+4. Each week: create a new file `week-NN.md`, paste the response format
+   below, fill it in, commit.
+
+## Response format
+
+Each `week-NN.md` should contain the following (copy and fill in):
+
+```markdown
+## Reading Response
+
+**Summary**
+1. Briefly summarize the main points of the reading (minimum 1-2 sentences).
+
+**Questions**
+2. What questions do you have? (minimum 1-2 sentences)
+```
 
 ## What's in this skeleton
 
 | File | Purpose |
 |---|---|
-| `README.md` | This file — replace with course-specific instructions. |
-| `0-template.md` | Response format students copy into `week-NN.md`. |
+| `README.md` | This file — replace with course-specific instructions and response format. |
 | `.github/workflows/lint.yml` | Basic markdown-lint action so students see a green/red check on each push. Extend as needed. |
