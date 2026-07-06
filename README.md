@@ -21,8 +21,8 @@ template" to create a course-specific response repo (e.g.
    repo URL and your GitHub username.
 
 The [`noise-courses/instructor-tools`](https://github.com/noise-courses/instructor-tools)
-repo has the shared grading tooling (`pull-responses.sh`, roster schema,
-setup docs).
+repo has the shared grading tooling (`pull-submissions.sh`, roster
+schema, setup docs).
 
 ## For students (when this becomes your class's template)
 
@@ -44,12 +44,16 @@ Each `week-NN.md` should contain the following (copy and fill in):
 ```markdown
 ## Reading Response
 
-**Summary**
-1. Briefly summarize the main points of the reading (minimum 1-2 sentences).
-
 **Questions**
-2. What questions do you have? (minimum 1-2 sentences)
+What questions do you have after reading? (1–2 sentences is plenty.)
+
+*If you used AI tools (Claude, ChatGPT, etc.) to help you think about
+this reading, please acknowledge them briefly here.*
 ```
+
+Keep it short. Longer prompts push students toward token-generator
+answers that help nobody. Courses that want a Summary or other section
+should edit this block and the matching lint rule below.
 
 ## What's in this skeleton
 
