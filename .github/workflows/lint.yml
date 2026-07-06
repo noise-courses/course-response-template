@@ -1,0 +1,43 @@
+name: lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify response files have required sections
+        run: |
+          missing=0
+          # Match week-NN.md (any two digits) at the repo root.
+          shopt -s nullglob
+          for f in week-*.md; do
+            if ! grep -q -i "^\*\*Summary\*\*" "$f"; then
+              echo "::error file=$f::missing **Summary** section"
+              missing=1
+            fi
+            if ! grep -q -i "^\*\*Questions\*\*" "$f"; then
+              echo "::error file=$f::missing **Questions** section"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "One or more response files are missing required sections."
+            exit 1
+          fi
+          echo "All response files pass structure check."
+
+      - name: Warn on stray files
+        run: |
+          # Non-fatal — just a heads-up if there are markdown files that
+          # don't match the expected naming convention.
+          for f in *.md; do
+            case "$f" in
+              README.md|0-template.md|week-*.md) ;;
+              *) echo "::warning file=$f::unexpected markdown file (expected week-NN.md)" ;;
+            esac
+          done
